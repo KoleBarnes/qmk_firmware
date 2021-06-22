@@ -55,7 +55,7 @@ static void render_logo(void) {
         0x3f, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0
     };
 
-    oled_write_raw_P(startset, sizeof(startset));
+    oled_write_raw_P(startset_logo, sizeof(startset_logo));
 }
 
 static void print_status_narrow(void) {
