@@ -25,8 +25,11 @@ for more options.
 #define EE_HANDS
 
 //Add RGB underglow
-#define RGB_DI_PIN D3
-#define RGBLED_NUM 74
-#define RGBLED_SPLIT {37,37}
-#define RGBLIGHT_ANIMATIONS
-#define RGBLIGHT_LIMIT_VAL 192 
+#define RGB_DI_PIN D3 //The pin connected to the data pin of the LEDs
+#define RGBLED_NUM 74 //The number of LEDs connected
+#define RGBLED_SPLIT {37,37} //For split keyboards, the number of LEDs connected on each half directly wired to RGB_DI_PIN
+#define RGBLIGHT_ANIMATIONS //Enable all additional animation modes.
+#define RGBLIGHT_DEFAULT_HUE 127
+#define RGBLIGHT_DEFAULT_SAT 255
+#define RGBLIGHT_LIMIT_VAL 60 //The maximum brightness level #192
+#define RGBLIGHT_SLEEP
