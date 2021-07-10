@@ -5,7 +5,7 @@
 #define PRODUCT_ID      0x0287
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Keyhive
-#define PRODUCT         Sharon
+#define PRODUCT         Rose
 #define DESCRIPTION     Rose version of the Sofle
 #define MASTER_RIGHT
 
@@ -21,7 +21,7 @@
 #define MATRIX_COL_PINS_RIGHT { F6, F7, B1, B3, B2, B6 }
 #define DIODE_DIRECTION COL2ROW
 
-#define TAPPING_TERM 100
+#define TAPPING_TERM 200
 #define DEBOUNCE 5
 
 /* encoder support */

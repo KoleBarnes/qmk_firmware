@@ -24,6 +24,14 @@ for more options.
 
 #define EE_HANDS
 
+#define RETRO_TAPPING
+
+//OLED
+#define OLED_BRIGHTNESS 80
+#define OLED_TIMEOUT 25000
+#define OLED_FADE_OUT
+#define OLED_FADE_OUT_INTERVAL 15
+
 //Add RGB underglow
 #define RGB_DI_PIN D3 //The pin connected to the data pin of the LEDs
 #define RGBLED_NUM 74 //The number of LEDs connected
