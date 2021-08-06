@@ -60,7 +60,14 @@ static void render_logo(void) {
 
 static void print_status_narrow(void) {
     // Print current mode
-    // oled_write_P(PSTR("\n"), false);
+
+    led_t led_usb_state = host_keyboard_led_state();
+    oled_write_P(PSTR("C"), led_usb_state.caps_lock);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(PSTR("N"), led_usb_state.num_lock);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(PSTR("S"), led_usb_state.scroll_lock);
+    oled_write_P(PSTR("\n"), false);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
@@ -90,12 +97,7 @@ static void print_status_narrow(void) {
         default:
             oled_write_ln_P(PSTR("Undef"), false);
     }
-    oled_write_P(PSTR("\n\n"), false);
-    led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("CL"), led_usb_state.caps_lock);
-    oled_write_ln_P(PSTR("NL"), led_usb_state.num_lock);
-    oled_write_ln_P(PSTR("SL"), led_usb_state.scroll_lock);
-    oled_write_P(PSTR("\n\n"), false);
+    oled_write_P(PSTR("\n"), false);
     #if LEADER_ENABLE
         oled_write_ln_P(PSTR("LDR:"), false);
     #endif
