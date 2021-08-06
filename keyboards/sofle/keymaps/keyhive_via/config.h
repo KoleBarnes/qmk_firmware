@@ -24,6 +24,12 @@ for more options.
 
 #define EE_HANDS
 
+#undef LEADER_TIMEOUT
+
+#define LEADER_NO_TIMEOUT
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 500
+
 #define RETRO_TAPPING
 
 //OLED

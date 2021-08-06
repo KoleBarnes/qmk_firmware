@@ -60,7 +60,7 @@ static void render_logo(void) {
 
 static void print_status_narrow(void) {
     // Print current mode
-    oled_write_P(PSTR("\n\n"), false);
+    // oled_write_P(PSTR("\n"), false);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
@@ -73,9 +73,9 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("Mod\n"), false);
             break;
     }
-    oled_write_P(PSTR("\n\n"), false);
+    oled_write_P(PSTR("\n"), false);
     // Print current layer
-    oled_write_ln_P(PSTR("LAYER"), false);
+    oled_write_ln_P(PSTR("LYR:"), false);
     switch (get_highest_layer(layer_state)) {
         case 0:
         case 1:
@@ -92,7 +92,28 @@ static void print_status_narrow(void) {
     }
     oled_write_P(PSTR("\n\n"), false);
     led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
+    oled_write_ln_P(PSTR("CL"), led_usb_state.caps_lock);
+    oled_write_ln_P(PSTR("NL"), led_usb_state.num_lock);
+    oled_write_ln_P(PSTR("SL"), led_usb_state.scroll_lock);
+    oled_write_P(PSTR("\n\n"), false);
+    #if LEADER_ENABLE
+        oled_write_ln_P(PSTR("LDR:"), false);
+    #endif
+}
+
+// #if LEADER_ENABLE
+// #endif
+void leader_start(void) {
+  // sequence started
+  oled_write_ln_P(PSTR("..."), false);
+}
+
+void leader_end(void) {
+  if (did_leader_succeed) {
+    oled_write_ln_P(PSTR("SUCD"), false);
+  } else {
+    oled_write_ln_P(PSTR("FAIL"), false);
+  }
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
