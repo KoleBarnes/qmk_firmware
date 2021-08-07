@@ -60,62 +60,72 @@ static void render_logo(void) {
 
 static void print_status_narrow(void) {
     // Print current mode
-
-    led_t led_usb_state = host_keyboard_led_state();
-    oled_write_P(PSTR("C"), led_usb_state.caps_lock);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(PSTR("N"), led_usb_state.num_lock);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(PSTR("S"), led_usb_state.scroll_lock);
-    oled_write_P(PSTR("\n"), false);
-
     switch (get_highest_layer(layer_state)) {
-        case 0:
+        case _QWERTY:
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
-        case 1:
+        // case _COLEMAK:
+        //     oled_write_ln_P(PSTR("Cole"), false);
+        //     break;
+        case _GAME:
             oled_write_ln_P(PSTR("Game"), false);
             break;
         default:
             oled_write_P(PSTR("Mod\n"), false);
             break;
     }
+
     oled_write_P(PSTR("\n"), false);
+
     // Print current layer
     oled_write_ln_P(PSTR("LYR:"), false);
     switch (get_highest_layer(layer_state)) {
-        case 0:
-        case 1:
+        case _QWERTY:
+        // case _COLEMAK:
+        case _GAME:
             oled_write_P(PSTR("Base\n"), false);
             break;
-        case 2:
+        case _NUMPAD:
+            oled_write_ln_P(PSTR("Num"), false);
+            break;
+        case _LOWER:
             oled_write_P(PSTR("Lower"), false);
             break;
-        case 3:
+        case _RAISE:
             oled_write_P(PSTR("Raise"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
+            break;
     }
+
     oled_write_P(PSTR("\n"), false);
-    #if LEADER_ENABLE
+
+    #ifdef LEADER_ENABLE
         oled_write_ln_P(PSTR("LDR:"), false);
+        switch (leader_state) {
+            case 1:
+                oled_write_ln_P(PSTR("..."), false);
+                break;
+            case 2: 
+                oled_write_ln_P(PSTR("SUCD"), false);
+                break;
+            case 3:
+                oled_write_ln_P(PSTR("FAIL"), false);
+                break;
+            default:
+                oled_write_ln_P(PSTR(" "), false);
+                break;
+        }
     #endif
-}
 
-// #if LEADER_ENABLE
-// #endif
-void leader_start(void) {
-  // sequence started
-  oled_write_ln_P(PSTR("..."), false);
-}
-
-void leader_end(void) {
-  if (did_leader_succeed) {
-    oled_write_ln_P(PSTR("SUCD"), false);
-  } else {
-    oled_write_ln_P(PSTR("FAIL"), false);
-  }
+    oled_write_P(PSTR("\n\n\n\n\n\n\n\n"), false);
+    led_t led_usb_state = host_keyboard_led_state();
+    oled_write_P(PSTR("C"), led_usb_state.caps_lock);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(PSTR("N"), led_usb_state.num_lock);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(PSTR("S"), led_usb_state.scroll_lock);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {

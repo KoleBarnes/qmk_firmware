@@ -24,26 +24,35 @@ for more options.
 
 #define EE_HANDS
 
-#undef LEADER_TIMEOUT
-
-#define LEADER_NO_TIMEOUT
-#define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 500
-
 #define RETRO_TAPPING
 
+#ifdef LEADER_ENABLE
+  #undef LEADER_TIMEOUT
+  #define LEADER_NO_TIMEOUT
+  #define LEADER_PER_KEY_TIMING
+  #define LEADER_TIMEOUT 500
+#endif
+
+#ifdef WPM_ENABLE
+  #define WPM_ALLOW_COUNT_REGRESSION
+#endif
+
 //OLED
-#define OLED_BRIGHTNESS 80
-#define OLED_TIMEOUT 25000
-#define OLED_FADE_OUT
-#define OLED_FADE_OUT_INTERVAL 15
+#ifdef OLED_DRIVER_ENABLE
+  #define OLED_BRIGHTNESS 80
+  #define OLED_TIMEOUT 25000
+  #define OLED_FADE_OUT
+  #define OLED_FADE_OUT_INTERVAL 15
+#endif
 
 //Add RGB underglow
-#define RGB_DI_PIN D3 //The pin connected to the data pin of the LEDs
-#define RGBLED_NUM 74 //The number of LEDs connected
-#define RGBLED_SPLIT {37,37} //For split keyboards, the number of LEDs connected on each half directly wired to RGB_DI_PIN
-#define RGBLIGHT_ANIMATIONS //Enable all additional animation modes.
-#define RGBLIGHT_DEFAULT_HUE 127
-#define RGBLIGHT_DEFAULT_SAT 255
-#define RGBLIGHT_LIMIT_VAL 60 //The maximum brightness level #192
-#define RGBLIGHT_SLEEP
+#ifdef RGBLIGHT_ENABLE
+  #define RGB_DI_PIN D3 //The pin connected to the data pin of the LEDs
+  #define RGBLED_NUM 74 //The number of LEDs connected
+  #define RGBLED_SPLIT {37,37} //For split keyboards, the number of LEDs connected on each half directly wired to RGB_DI_PIN
+  #define RGBLIGHT_ANIMATIONS //Enable all additional animation modes.
+  #define RGBLIGHT_DEFAULT_HUE 127
+  #define RGBLIGHT_DEFAULT_SAT 255
+  #define RGBLIGHT_LIMIT_VAL 60 //The maximum brightness level #192
+  #define RGBLIGHT_SLEEP
+#endif
