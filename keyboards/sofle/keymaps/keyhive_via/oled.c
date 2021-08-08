@@ -119,13 +119,14 @@ static void print_status_narrow(void) {
         }
     #endif
 
-    oled_write_P(PSTR("\n\n\n\n\n\n\n\n"), false);
     led_t led_usb_state = host_keyboard_led_state();
-    oled_write_P(PSTR("C"), led_usb_state.caps_lock);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(PSTR("N"), led_usb_state.num_lock);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(PSTR("S"), led_usb_state.scroll_lock);
+    oled_set_cursor(0,15);
+    oled_write_P(led_usb_state.caps_lock ? PSTR("C") : PSTR(" "), false);
+    oled_set_cursor(2,15);
+    oled_write_P(led_usb_state.num_lock ? PSTR("N") : PSTR(" "), false);
+    oled_set_cursor(4,15);
+    oled_write_P(led_usb_state.scroll_lock ? PSTR("S") : PSTR(" "), false);
+    oled_set_cursor(0,0);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
