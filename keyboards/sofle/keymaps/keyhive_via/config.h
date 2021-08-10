@@ -28,9 +28,9 @@ for more options.
 
 #ifdef LEADER_ENABLE
   #undef LEADER_TIMEOUT
+  #define LEADER_TIMEOUT 500
   #define LEADER_NO_TIMEOUT
   #define LEADER_PER_KEY_TIMING
-  #define LEADER_TIMEOUT 500
 #endif
 
 #ifdef WPM_ENABLE

@@ -9,6 +9,7 @@
         "**/*.bin": true
     },
     "files.associations": {
+        "*.json": "jsonc",
         "*.h": "c",
         "*.c": "c",
         "*.inc": "c",
@@ -17,7 +18,26 @@
         "xstddef": "c",
         "type_traits": "c",
         "utility": "c",
-        "ranges": "c"
+        "ranges": "c",
+        "array": "c",
+        "deque": "c",
+        "forward_list": "c",
+        "hash_map": "c",
+        "hash_set": "c",
+        "iterator": "c",
+        "list": "c",
+        "map": "c",
+        "memory": "c",
+        "regex": "c",
+        "set": "c",
+        "streambuf": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "xhash": "c",
+        "xmemory0": "c",
+        "xstring": "c",
+        "xtree": "c",
+        "xutility": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,

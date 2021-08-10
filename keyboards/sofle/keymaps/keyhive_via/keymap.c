@@ -18,9 +18,17 @@
 // TODO add num pad layer
 
 #include QMK_KEYBOARD_H
+#include <stdio.h>
 
-bool did_leader_succeed;
-int leader_state = 0;
+#ifdef LEADER_ENABLE
+  bool did_leader_succeed;
+  int leader_state = 0;
+  uint16_t leader_timer = 0;
+#endif
+
+#ifdef WPM_ENABLE
+  char wpm_char[10];
+#endif
 
 enum layers {
   _QWERTY,
@@ -38,24 +46,34 @@ enum layers {
 
 #ifdef LEADER_ENABLE
   LEADER_EXTERNS();
+#endif
 
   void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-      did_leader_succeed = leading = false;
 
-      SEQ_ONE_KEY(KC_F) {
-        // Anything you can do in a macro.
-        SEND_STRING("QMK is awesome.");
-        did_leader_succeed = true;
+    #ifdef LEADER_ENABLE
+      LEADER_DICTIONARY() {
+        did_leader_succeed = leading = false;
+
+        SEQ_ONE_KEY(KC_F) {
+          // Anything you can do in a macro.
+          SEND_STRING("QMK is awesome.");
+          did_leader_succeed = true;
+        }
+        SEQ_THREE_KEYS(KC_D, KC_D, KC_G) {
+          SEND_STRING("https://start.duckduckgo.com\n");
+          did_leader_succeed = true;
+        }
+        leader_end();
       }
-      SEQ_THREE_KEYS(KC_D, KC_D, KC_G) {
-        SEND_STRING("https://start.duckduckgo.com\n");
-        did_leader_succeed = true;
+
+      if (leader_state != 0 && timer_elapsed(leader_timer) > 5000) {
+          leader_state = 0;
       }
-      leader_end();
-    }
+    #endif
+
   }
 
+#ifdef LEADER_ENABLE
   void leader_start(void) {
     // sequence started
     leader_state = 1;
@@ -67,6 +85,7 @@ enum layers {
     } else {
       leader_state = 3;
     }
+    leader_timer = timer_read();
   }
 #endif
 
