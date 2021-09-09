@@ -54,17 +54,11 @@ void suspend_power_down_user(void) { // turn off when computer is sleeping.
   #ifdef OLED_DRIVER_ENABLE
     oled_off();
   #endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-  #endif
 }
 
 void suspend_wakeup_init_user(void) {  // turn on when computer is awake.
   #ifdef OLED_DRIVER_ENABLE
     oled_on();
-  #endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_enable();
   #endif
 }
 
@@ -281,8 +275,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *             `----------------------------------'           '------''---------------------------'
   */
   [_RAISE] = LAYOUT(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG, RGB_VAI,                     TG(_GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX, _______,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,                     TG(_GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_VAI,                       KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX, _______,
     XXXXXXX, XXXXXXX, XXXXXXX, KC_CLCK, KC_NLCK, KC_SLCK,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______, XXXXXXX,     VDL,      TV,     VDR, XXXXXXX, _______,
                       _______, _______, _______, _______, _______,     _______, _______, _______, XXXXXXX, XXXXXXX
