@@ -136,12 +136,4 @@ void oled_task_user(void) {
     }
 }
 
-void suspend_power_down_user(void) { //turn off OLEDs when computer is sleeping
-    oled_off();
-}
-
-void suspend_wakeup_init_user(void) {
-    oled_on();
-}
-
 #endif

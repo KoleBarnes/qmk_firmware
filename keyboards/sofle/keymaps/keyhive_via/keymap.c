@@ -50,6 +50,24 @@ enum custom_keycodes {
 
 // Default keymap. This can be changed in Via. Use oled.c and encoder.c to change behavior that Via cannot change.
 
+void suspend_power_down_user(void) { // turn off when computer is sleeping.
+  #ifdef OLED_DRIVER_ENABLE
+    oled_off();
+  #endif
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_disable();
+  #endif
+}
+
+void suspend_wakeup_init_user(void) {  // turn on when computer is awake.
+  #ifdef OLED_DRIVER_ENABLE
+    oled_on();
+  #endif
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_enable();
+  #endif
+}
+
 #ifdef LEADER_ENABLE
   LEADER_EXTERNS();
 #endif
