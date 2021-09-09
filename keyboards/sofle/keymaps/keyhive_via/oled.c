@@ -59,46 +59,6 @@
 // }
 
 static void print_status_narrow(void) {
-    // // Print current mode
-    // switch (get_highest_layer(layer_state)) {
-    //     case _QWERTY:
-    //         oled_write_ln_P(PSTR("Qwrt"), false);
-    //         break;
-    //     // case _COLEMAK:
-    //     //     oled_write_ln_P(PSTR("Cole"), false);
-    //     //     break;
-    //     case _GAME:
-    //         oled_write_ln_P(PSTR("Game"), false);
-    //         break;
-    //     default:
-    //         oled_write_P(PSTR("Mod\n"), false);
-    //         break;
-    // }
-
-    // oled_write_P(PSTR("\n"), false);
-
-    // // Print current layer
-    // oled_write_ln_P(PSTR("LYR:"), false);
-    // switch (get_highest_layer(layer_state)) {
-    //     case _QWERTY:
-    //     // case _COLEMAK:
-    //     case _GAME:
-    //         oled_write_P(PSTR("Base\n"), false);
-    //         break;
-    //     case _NUMPAD:
-    //         oled_write_ln_P(PSTR("Num"), false);
-    //         break;
-    //     case _LOWER:
-    //         oled_write_P(PSTR("Lower"), false);
-    //         break;
-    //     case _RAISE:
-    //         oled_write_P(PSTR("Raise"), false);
-    //         break;
-    //     default:
-    //         oled_write_ln_P(PSTR("Undef"), false);
-    //         break;
-    // }
-
     // Print current layer
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
@@ -157,10 +117,7 @@ static void print_status_narrow(void) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    // if (is_keyboard_master()) {
-         return OLED_ROTATION_270;
-    // }
-    // return rotation;
+    return OLED_ROTATION_270;
 }
 
 void oled_task_user(void) {
@@ -177,6 +134,14 @@ void oled_task_user(void) {
         #endif
         oled_set_cursor(0,0);
     }
+}
+
+void suspend_power_down_user(void) { //turn off OLEDs when computer is sleeping
+    oled_off();
+}
+
+void suspend_wakeup_init_user(void) {
+    oled_on();
 }
 
 #endif
