@@ -64,7 +64,7 @@ static void print_status_narrow(void) {
         case _QWERTY:
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
-        case _COLEMAK:
+        case _COLEMAK_DHM:
             oled_write_ln_P(PSTR("ClMk"), false);
             break;
         case _GAME:
