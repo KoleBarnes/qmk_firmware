@@ -31,6 +31,9 @@ static void print_status_narrow(void) {
         case _GAME:
             oled_write_ln_P(PSTR("Game"), false);
             break;
+        case _NUMPAD:
+            oled_write_P(PSTR("Num"), false);
+            break;
         case _LOWER:
             oled_write_P(PSTR("Lower"), false);
             break;

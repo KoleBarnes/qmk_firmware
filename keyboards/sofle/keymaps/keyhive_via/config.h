@@ -30,8 +30,6 @@ for more options.
 #ifdef OLED_DRIVER_ENABLE
   #define OLED_BRIGHTNESS 80
   #define OLED_TIMEOUT 25000
-  #define OLED_FADE_OUT
-  #define OLED_FADE_OUT_INTERVAL 15
 #endif
 
 //Add RGB underglow
