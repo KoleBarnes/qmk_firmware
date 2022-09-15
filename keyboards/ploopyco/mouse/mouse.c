@@ -32,7 +32,7 @@
 #endif
 #ifndef PLOOPY_DPI_OPTIONS
 #    define PLOOPY_DPI_OPTIONS \
-        { 1200, 1600, 2400 }
+        { 800, 1200 }
 #    ifndef PLOOPY_DPI_DEFAULT
 #        define PLOOPY_DPI_DEFAULT 1
 #    endif
