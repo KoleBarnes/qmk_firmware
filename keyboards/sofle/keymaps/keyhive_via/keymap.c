@@ -25,8 +25,12 @@ enum layers {
 };
 
 enum custom_keycodes {
-	VDR = SAFE_RANGE, // Virtual Desktop Right
-	VDL, // Virtual Desktop Left
+	LVDH = SAFE_RANGE, // Linux Virtual Desktop Home
+    LVDL, // Linux Virtual Desktop Right
+	LVDR, // Linux Virtual Desktop Left
+    LVDE, // Linux Virtual Desktop End
+    WVDL, // Windows Virtual Desktop Right
+	WVDR, // Windows Virtual Desktop Left
     TV, // Task View
     PWRD, // Previous Word
     NWRD // Next Word
@@ -141,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCBR, _______,     _______, KC_RCBR,  XXXXXXX,  XXXXXXX, XXXXXXX, KC_BSLS, _______,
                       _______, _______, _______, _______, _______,     _______, _______,  _______,  _______, _______
   ),
- /* RAISE
+ /* RAISE Windows
   *  .-----------------------------------------.                           .-----------------------------------------.
   *  | XMAS |PLAIN |RGBSAI|RGBHUI|RGBVAI|RGBTOG|                           |  TG1 |      |      |      |      |      |
   *  |------+------+------+------+------+------|                           |------+------+------+------+------+------|
@@ -149,7 +153,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *  |------+------+------+------+------+------|                           |------+------+------+------+------+------|
   *  |      |      |      |      |      |      |-------.           .-------| PGDN | Left | Down |Right | End  |      |
   *  |------+------+------+------+------+------|_______|           |_______|------+------+------+------+------+------|
-  *  |______|      |      |      |      |      |-------|___     ___|-------|Insert|  VDL |  TV  |  VDR |      |______|
+  *  |______|      |      |      |      |      |-------|___     ___|-------|Insert| WVDL |  TV  | WVDR |      |______|
+  *  \-----------------------------------------|  /       /     \      \   |-----------------------------------------/
+  *                |______|______|______|______| /_______/       \______\  |______|______|      |      |
+  *                |      |      |      |      |/       /         \      \ |      |      |      |      |
+  *                \-----------------------------------/           \-----------------------------------/
+  */
+//   [_RAISE] = LAYOUT(
+//     RGB_MODE_XMAS, RGB_MODE_PLAIN, RGB_SAI, RGB_HUI, RGB_VAI, RGB_TOG,                     TG(_GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+//           XXXXXXX,        XXXXXXX, XXXXXXX, KC_CLCK, KC_NLCK, KC_SLCK,                       KC_PGUP,    PWRD,   KC_UP,    NWRD, KC_HOME, _______,
+//           XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
+//           _______,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______,  KC_INS,    WVDL,      TV,    WVDR, XXXXXXX, _______,
+//                                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+//   )
+ /* RAISE Linux
+  *  .-----------------------------------------.                           .-----------------------------------------.
+  *  | XMAS |PLAIN |RGBSAI|RGBHUI|RGBVAI|RGBTOG|                           |  TG1 |      |      |      |      |      |
+  *  |------+------+------+------+------+------|                           |------+------+------+------+------+------|
+  *  |      |      |      | Caps | Num  | Scrl |                           | PGUP | Home | PWRD | NWRD | End  |______|
+  *  |------+------+------+------+------+------|                           |------+------+------+------+------+------|
+  *  |      |      |      |      |      |      |-------.           .-------| PGDN | Left | Down |  Up  |Right |      |
+  *  |------+------+------+------+------+------|_______|           |_______|------+------+------+------+------+------|
+  *  |______|      |      |      |      |      |-------|___     ___|-------|Insert| LVDH | LVDL | LVDR | LVDE |______|
   *  \-----------------------------------------|  /       /     \      \   |-----------------------------------------/
   *                |______|______|______|______| /_______/       \______\  |______|______|      |      |
   *                |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -157,9 +182,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   */
   [_RAISE] = LAYOUT(
     RGB_MODE_XMAS, RGB_MODE_PLAIN, RGB_SAI, RGB_HUI, RGB_VAI, RGB_TOG,                     TG(_GAME), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-          XXXXXXX,        XXXXXXX, XXXXXXX, KC_CLCK, KC_NLCK, KC_SLCK,                       KC_PGUP,    PWRD,   KC_UP,    NWRD, KC_HOME, _______,
-          XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
-          _______,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______,  KC_INS,     VDL,      TV,     VDR, XXXXXXX, _______,
+          XXXXXXX,        XXXXXXX, XXXXXXX, KC_CLCK, KC_NLCK, KC_SLCK,                       KC_PGUP, KC_HOME,    PWRD,    NWRD,  KC_END, _______,
+          XXXXXXX,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX,
+          _______,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______,  KC_INS,    LVDH,    LVDL,    LVDR,    LVDE, _______,
                                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
   )
 };
@@ -178,22 +203,54 @@ void suspend_wakeup_init_user(void) {  // turn on when computer is awake.
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) { // For keycode overrides
-		case VDR: // Virtual Desktop Right
+		case LVDH: // Windows Virtual Desktop Home
 		    if (record->event.pressed) {
                 register_code(KC_LGUI);
-                register_code(KC_LCTRL);
-                register_code(KC_RIGHT);
-                unregister_code(KC_RIGHT);
-                unregister_code(KC_LCTRL);
+                register_code(KC_HOME);
+                unregister_code(KC_HOME);
                 unregister_code(KC_LGUI);
 		    }
 		    return true;
-		case VDL: // Virtual Desktop Left
+		case LVDL: // Windows Virtual Desktop Left
+		    if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_PGUP);
+                unregister_code(KC_PGUP);
+                unregister_code(KC_LGUI);
+		    }
+		    return true;
+        case LVDR: // Windows Virtual Desktop Right
+		    if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_PGDN);
+                unregister_code(KC_PGDN);
+                unregister_code(KC_LGUI);
+		    }
+		    return true;
+        case LVDE: // Windows Virtual Desktop End
+		    if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_END);
+                unregister_code(KC_END);
+                unregister_code(KC_LGUI);
+		    }
+		    return true;
+		case WVDL: // Windows Virtual Desktop Left
 		    if (record->event.pressed) {
                 register_code(KC_LGUI);
                 register_code(KC_LCTRL);
                 register_code(KC_LEFT);
                 unregister_code(KC_LEFT);
+                unregister_code(KC_LCTRL);
+                unregister_code(KC_LGUI);
+		    }
+		    return true;
+		case WVDR: // Windows Virtual Desktop Right
+		    if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LCTRL);
+                register_code(KC_RIGHT);
+                unregister_code(KC_RIGHT);
                 unregister_code(KC_LCTRL);
                 unregister_code(KC_LGUI);
 		    }
