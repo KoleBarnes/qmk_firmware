@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  ______  |  < E >  |  ______   |------+------+------+------+------+------|
  * |______|   =  |   -  |   +  |   {  |   }  |----------|    R    |-----------|   [  |   ]  |   ;  |   :  |  \|  |______|
  * '-----------------------------------------|  /       /         \       \   |-----------------------------------------'
- *               | BOOT |______|______|______| /______ /           \ ______\  |______|______|______|______|
+ *               |______|______|______|______| /______ /           \ ______\  |______|______|______|______|
  *               |      |      |      |      |/       /             \       \ |      |      |      |      |
  *               '-----------------------------------'               '------------------------------------'
  */
@@ -157,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_F12 ,
   _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
   _______, KC_EQL , KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,     _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
-                    QK_BOOT, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
 ),
 
 
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  ______  |  < E >  |  ______   |------+------+------+------+------+------|
  * |______|      |      |      |      |      |----------|    R    |-----------|Insert| LVDH | LVDL | LVDR | LVDE |______|
  * '-----------------------------------------|  /       /         \       \   |-----------------------------------------'
- *               |RGBSAI|RGBHUI|RGBVAI|RGBTOG| /______ /           \ ______\  |  TG1 |______|______| BOOT |
+ *               |RGBSAI|RGBHUI|RGBVAI|RGBTOG| /______ /           \ ______\  |  TG1 |______|______|______|
  *               |      |      |      |      |/       /             \       \ |      |      |      |      |
  *               '-----------------------------------'               '------------------------------------'
  */
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_NUM , KC_SCRL,                       KC_PGUP  , KC_HOME, PWRD   , NWRD   , KC_END , KC_F12 ,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN  , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,     _______, KC_INS   , LVDH   , LVDL   , LVDR   , LVDE   , _______,
-                    RGB_SAI, RGB_HUI, RGB_VAI, RGB_TOG, _______,     _______, TG(_GAME), _______, _______, QK_BOOT
+                    RGB_SAI, RGB_HUI, RGB_VAI, RGB_TOG, _______,     _______, TG(_GAME), _______, _______, _______
 )
 };
 

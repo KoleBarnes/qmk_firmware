@@ -22,6 +22,9 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 
+#define RETRO_TAPPING
+#define TAPPING_TERM 175
+
 //OLED
 #ifdef OLED_ENABLE
   #undef OLED_BRIGHTNESS
