@@ -76,6 +76,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT(
           DPI_CONFIG, _______, _______, _______, TG(_GAME),
   XXXXXXX,
-  XXXXXXX,                 OSL(_ADJUST)
+  XXXXXXX,                 _______
 )
 };

@@ -19,7 +19,7 @@
 #pragma once
 
 #define TAPPING_TERM 175
-#define RETRO_TAPPING
+// #define RETRO_TAPPING
 #define PLOOPY_DPI_OPTIONS { 800, 1200 }
 #define PLOOPY_DPI_DEFAULT 1
 #define ONESHOT_TAP_TOGGLE 5  /* Tapping this number of times holds the key until tapped once again. */

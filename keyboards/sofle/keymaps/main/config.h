@@ -22,6 +22,8 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 
+#define EE_HANDS
+
 #define RETRO_TAPPING
 #define TAPPING_TERM 175
 
