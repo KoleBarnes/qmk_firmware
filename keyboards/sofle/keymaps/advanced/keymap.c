@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  VolUp   |  < N >  |  Pg Up    |------+------+------+------+------+------|
  * | #/Tab|   Q  |   W  |   E  |   R  |   T  |----------|    C    |-----------|   Y  |   U  |   I  |   O  |   P  | Del  |
  * |------+------+------+------+------+------|  Mute    |  < O >  |           |------+------+------+------+------+------|
- * | APP  |   A  |   S  |   D  |   F  |   G  |----------|    D    |-----------|   H  |   J  |   K  |   L  |   ;  |  '   |
+ * | APP  |   A  | ALT/S| CTL/D| GUI/F| LWR/G|----------|    D    |-----------| RAS/H| GUI/J| CTR/K| ALT/L|   ;  |  '   |
  * |------+------+------+------+------+------|  VolDn   |  < E >  |  Pg Dn    |------+------+------+------+------+------|
  * |SpcCad|   Z  |   X  |   C  |   V  |   B  |----------|    R    |-----------|   N  |   M  |   ,  |   .  |   /  |SpcCad|
  * '-----------------------------------------|  /       /         \       \   |-----------------------------------------'
@@ -68,11 +68,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               '-----------------------------------'               '------------------------------------'
  */
 [_QWERTY] = LAYOUT(
-  KC_ESC            , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                              KC_6          , KC_7   , KC_8   , KC_9  , KC_0   , KC_MINUS,
-  LT(_NUMPAD,KC_TAB), KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                              KC_Y          , KC_U   , KC_I   , KC_O  , KC_P   ,   KC_DEL,
-  KC_APP            , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                                              KC_H          , KC_J   , KC_K   , KC_L  , KC_SCLN,  KC_QUOT,
-  SC_LSPO           , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_MUTE           ,     XXXXXXX            , KC_N          , KC_M   , KC_COMM, KC_DOT, KC_SLSH,  SC_RSPC,
-                               QK_LEAD, KC_LALT, KC_LGUI, KC_LCTL, LT(_LOWER, KC_SPC),     LT(_RAISE, KC_BSPC), RSFT_T(KC_ENT), KC_RGUI, KC_RALT, QK_LEAD
+  KC_ESC            , KC_1   , KC_2              , KC_3              , KC_4              , KC_5            ,                                              KC_6             , KC_7              , KC_8              , KC_9              , KC_0   , KC_MINUS,
+  LT(_NUMPAD,KC_TAB), KC_Q   , KC_W              , KC_E              , KC_R              , KC_T            ,                                              KC_Y             , KC_U              , KC_I              , KC_O              , KC_P   ,   KC_DEL,
+  KC_APP            , KC_A   , MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), MT(MOD_LGUI, KC_F), LT(_LOWER, KC_G),                                              LT(_RAISE, KC_H ), MT(MOD_LGUI, KC_J), MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), KC_SCLN,  KC_QUOT,
+  SC_LSPO           , KC_Z   , KC_X              , KC_C              , KC_V              , KC_B            , KC_MUTE           ,     XXXXXXX            , KC_N             , KC_M              , KC_COMM           , KC_DOT            , KC_SLSH,  SC_RSPC,
+                               QK_LEAD           , KC_LALT           , KC_LGUI           , KC_LCTL         , LT(_LOWER, KC_SPC),     LT(_RAISE, KC_BSPC), RSFT_T(KC_ENT)   , KC_RGUI           , KC_RALT           , QK_LEAD
 ),
 
 
