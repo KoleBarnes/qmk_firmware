@@ -39,9 +39,13 @@ for more options.
 //OLED
 #ifdef OLED_ENABLE
   #undef OLED_BRIGHTNESS
+  #define OLED_BRIGHTNESS 75
   #undef OLED_TIMEOUT
-  #define OLED_BRIGHTNESS 80
   #define OLED_TIMEOUT 20000
+  #define SPLIT_LAYER_STATE_ENABLE
+  #define SPLIT_LED_STATE_ENABLE
+//   #define SPLIT_MODS_ENABLE
+  #define SPLIT_OLED_ENABLE
 #endif
 
 // More lighting options in quantum/rgblight/rgblight.h

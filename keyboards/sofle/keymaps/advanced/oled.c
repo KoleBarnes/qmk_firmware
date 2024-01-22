@@ -17,7 +17,39 @@
 
 //Sets up what the OLED screens display.
 
-static void print_status_narrow(void) {
+// static void render_background(void) {
+//     static const char PROGMEM raw_background[] = {
+//         0,  0,  0,  0, 64, 64, 64,240,248,248,255, 56,255,248,248, 63,248,248,255, 56,255,248,248,240, 64, 64, 64,  0,  0,  0,  0,  0,  0,  0,  0,  0, 73, 73, 73,255,255,255,255,224,223,191,191,  0,191,191,223,224,255,255,255,255, 73, 73, 73,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  7, 15, 15,127, 15,127, 15, 15,126, 15, 15,127, 15,127, 15, 15,  7,  1,  1,  1,  0,  0,  0,  0,  0,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,
+//         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+//         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+//         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+//     };
+//     oled_write_raw_P(raw_background, sizeof(raw_background));
+// }
+
+
+static void render_logo(void) {
+    static const char PROGMEM qmk[] = {
+        0,  0,  0,  0, 64, 64, 64,240,248,248,255, 56,255,248,248, 63,248,248,255, 56,255,248,248,240, 64, 64, 64,  0,  0,  0,  0,  0,  0,  0,  0,  0, 73, 73, 73,255,255,255,255,224,223,191,191,  0,191,191,223,224,255,255,255,255, 73, 73, 73,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  7, 15, 15,127, 15,127, 15, 15,126, 15, 15,127, 15,127, 15, 15,  7,  1,  1,  1,  0,  0,  0,  0,  0,
+    };
+    oled_write_raw_P(qmk, sizeof(qmk));
+}
+
+// static void render_tux(void) {
+//     static const char PROGMEM tux[] = {
+//         153,154,10,
+//         185,186,0
+//     };
+
+//     oled_write_P(tux, false);
+// }
+
+static void print_status(void) {
+    oled_set_cursor(0,0);
+    // render_background();
+    render_logo();
+
+    oled_set_cursor(0,4);
     // Print current layer
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
@@ -43,31 +75,35 @@ static void print_status_narrow(void) {
             break;
     }
 
-    oled_write_P(PSTR("\n"), false);
 
-    #ifdef LEADER_ENABLE
+    if (is_keyboard_master()) {
+        oled_set_cursor(0,13);
 
-        if (leader_sequence_active()) {
-            oled_write_P(PSTR(":"), false);
-        }
+        #ifdef LEADER_ENABLE
+            if (leader_sequence_active()) {
+                oled_write_P(PSTR("LEAD"), false);
+            } else {
+                switch (leader_state) {
+                    case _SUCD:
+                        oled_write_ln_P(PSTR("SUCD"), false);
+                        break;
+                    case _FAIL:
+                        oled_write_ln_P(PSTR("FAIL"), false);
+                        break;
+                    default:
+                        oled_write_ln_P(PSTR(" "), false);
+                        break;
+                }
+            }
 
-        switch (leader_state) {
-            case _SUCD:
-                oled_write_ln_P(PSTR("SUCD"), false);
-                break;
-            case _FAIL:
-                oled_write_ln_P(PSTR("FAIL"), false);
-                break;
-            default:
-                oled_write_ln_P(PSTR(" "), false);
-                break;
-        }
-
-        if (leader_state != _IDLE && timer_elapsed(leader_timer) > 5000) {
-            leader_state = _IDLE;
-        }
-
-    #endif
+            if (leader_state != _IDLE && timer_elapsed(leader_timer) > 5000) {
+                leader_state = _IDLE;
+            }
+        #endif
+     } // else {
+    //     oled_set_cursor(0,12);
+    //     render_tux();
+    // }
 
     led_t led_usb_state = host_keyboard_led_state();
     oled_set_cursor(0,15);
@@ -76,40 +112,18 @@ static void print_status_narrow(void) {
     oled_write_P(led_usb_state.num_lock ? PSTR("N") : PSTR(" "), false);
     oled_set_cursor(4,15);
     oled_write_P(led_usb_state.scroll_lock ? PSTR("S") : PSTR(" "), false);
-    oled_set_cursor(0,0);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    }
-    return rotation;
+    return OLED_ROTATION_270;
 }
-
-/* void oled_render_boot(bool bootloader) {
-    oled_clear();
-    for (int i = 0; i < 16; i++) {
-        oled_set_cursor(0, i);
-        if (bootloader) {
-            oled_write_P(PSTR("Awaiting New Firmware "), false);
-        } else {
-            oled_write_P(PSTR("Rebooting "), false);
-        }
-    }
-
-    oled_render_dirty(true);
-}
-
-bool shutdown_user(bool jump_to_bootloader) {
-    oled_render_boot(jump_to_bootloader);
-    return false;
-} */
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        print_status_narrow();
-    } else {
-        oled_set_cursor(0,0);
-    }
+    print_status();
+    // if (is_keyboard_master()) {
+    //     print_status();
+    // } else {
+    //     oled_set_cursor(0,0);
+    // }
     return false;
 }
